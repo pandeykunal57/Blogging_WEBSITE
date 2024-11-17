@@ -1,5 +1,5 @@
 const express = require('express');
-const { Client } = require('pg'); // PostgreSQL client
+const { Client } = require('pg'); 
 const app = express();
 const port = 3000;
 
