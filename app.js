@@ -5,11 +5,11 @@ const port = 3000;
 
 // Set up PostgreSQL connection
 const client = new Client({
-    host: 'localhost', 
-    port: 5432, 
-    user: 'postgres', 
+    host: 'localhost',
+    port: 5432,
+    user: 'postgres',
     password: 'kunal@36',
-    database: 'Blogsite' 
+    database: 'Blogsite',
 });
 
 client.connect();
@@ -26,6 +26,16 @@ app.get('/', async (req, res) => {
         const posts = result.rows;
         const selectedPostId = req.query.postId;
         const selectedPost = posts.find(p => p.id == selectedPostId);
+
+        // Format the created_at field to a readable date format
+        posts.forEach(post => {
+            post.formattedCreatedAt = new Date(post.created_at).toLocaleString();
+        });
+
+        if (selectedPost) {
+            selectedPost.formattedCreatedAt = new Date(selectedPost.created_at).toLocaleString();
+        }
+
         res.render('index', { posts: posts, selectedPost: selectedPost });
     } catch (err) {
         console.error(err);
@@ -41,7 +51,7 @@ app.get('/new-post', (req, res) => {
 // Create a new post in the database
 app.post('/new-post', async (req, res) => {
     const { title, content, author } = req.body;
-    const createdAt = new Date().toLocaleString();
+    const createdAt = new Date(); // Get the current timestamp
     try {
         const result = await client.query(
             'INSERT INTO posts (title, content, author, created_at) VALUES ($1, $2, $3, $4) RETURNING *',
@@ -61,6 +71,7 @@ app.get('/edit/:id', async (req, res) => {
         const result = await client.query('SELECT * FROM posts WHERE id = $1', [postId]);
         const post = result.rows[0];
         if (post) {
+            post.formattedCreatedAt = new Date(post.created_at).toLocaleString();
             res.render('edit-post', { post: post });
         } else {
             res.status(404).send('Post not found');

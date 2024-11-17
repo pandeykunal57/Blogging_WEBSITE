@@ -1,26 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Noto+Sans:ital,wght@1,606&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@1,500&family=Roboto:ital,wght@1,500;1,700&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Noto+Sans:ital,wght@1,606&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@1,500&family=Roboto:ital,wght@1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-           
             <h2>Blog Posts</h2>
             <ul>
                 <% posts.forEach(post => { %>
@@ -37,7 +31,8 @@
                 <p><%= selectedPost.content %></p>
                 <div class="post-meta">
                     <span class="author">Author: <%= selectedPost.author %></span>
-                    <span class="date">Created at: <%= selectedPost.createdAt %></span>
+                    <!-- Display formatted timestamp -->
+                    <span class="date">Created at: <%= selectedPost.formattedCreatedAt %></span>
                 </div>
                 <div class="post-actions">
                     <a href="/edit/<%= selectedPost.id %>" class="edit-btn">Edit</a>

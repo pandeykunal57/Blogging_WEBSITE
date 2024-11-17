@@ -1,210 +1,292 @@
-
-
+/* Ensure fonts take precedence */
 body {
-    
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif !important;
+    background-color: #f1f5f9; /* Lighter background to contrast darker elements */
+    color: #333;
     display: flex;
-    
-}
-
-.container {
-    display: flex;
-    flex: 1;
-    max-height: 100%;
+    justify-content: center;
+    align-items: flex-start;
     min-height: 100vh;
 }
 
+/* Center the main container with more space */
+.container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px auto; /* Add more space around the container */
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Sidebar */
 .sidebar {
-    background-color: #508C9B;
+    background-color: #3A4A6A; /* Darker blue for sidebar */
     width: 280px;
-    padding: 20px;
-    border-right: 2px  solid #38646d;
-    box-shadow: 20px 20px 20px 20px rgba(0,0,0,0.1);
-    
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 6px 6px 30px rgba(0, 0, 0, 0.15); /* Bigger shadow for depth */
+    flex: 1;
+    height: auto;
+    transition: transform 0.3s ease;
 }
 
-.sidebar .new-post-btn {
-    display: block;
-    margin-top: 100px;
-    padding: 10px 20px;
-    background-color:#201E43;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    font-family: "Kanit", sans-serif;
-}
-
-.sidebar .new-post-btn:hover {
-    background-color:#134B70;
+.sidebar:hover {
+    transform: translateX(-5px); /* Subtle movement on hover */
 }
 
 .sidebar h2 {
-    font-family: "Edu AU VIC WA NT Hand", cursive;
-    color: #0f3b59;
-    font-size: 40px;
-    margin-top: 20px;
-    font-weight: 800;
-    text-shadow: 2px 2px 2px  #000000;
-    
+    font-family: 'Edu AU VIC WA NT Hand', cursive !important;
+    color: #f0f5f9;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+}
+
+.sidebar .new-post-btn {
+    background-color: #4F6A82; /* Darker blue for new post button */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    display: block;
+    margin-top: 40px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.sidebar .new-post-btn:hover {
+    background-color: #3C4F66;
+    transform: translateY(-3px);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.3);
 }
 
 .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    word-wrap: break-word;
-    
-    
-    
-    
+    list-style: none;
+    padding-left: 0;
+    margin-top: 25px;
 }
 
 .sidebar li {
-    margin: 10px 0;
-    font-family: "Kanit", sans-serif;
-    margin-top: 20px;
-    font-size: 22px;
-    text-shadow: 0px 1px  #012508;
+    font-size: 18px;
+    color: #D1D1D1;
+    margin: 14px 0;
+    transition: color 0.3s ease;
+}
+
+.sidebar li:hover {
+    color: #fff;
 }
 
 .sidebar a {
     text-decoration: none;
-    color: #0f3b59;
+    color: inherit;
 }
 
 .sidebar a:hover {
     text-decoration: underline;
+    color: #f5f5f5;
 }
 
+/* Content Area */
 .content {
-    background-color: #EEEEEE;
-    flex: 1;
-    padding: 20px;
+    flex: 3;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    margin-left: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.content:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 40px rgba(0, 0, 0, 0.2);
 }
 
 .content h1 {
-    margin-top: 20px;
-    font-family: "Kanit", sans-serif;
-    font-size: 80px;
-    color: #555;
+    font-family: 'Kanit', sans-serif !important;
+    font-size: 50px;
+    color: #2F3C55;
+    margin-bottom: 25px;
+    text-align: center;
+    text-transform: uppercase;
 }
+
 .content p {
-    font-size: 21px;
-    margin-right: 200px;
-    font-family: "Nunito", sans-serif;
-    color: #333;
+    font-size: 20px;
+    line-height: 1.75;
+    color: #444;
+    margin-bottom: 25px;
 }
 
 .post-meta {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
     font-size: 0.9em;
-    color: #555;
+    color: #999;
+    margin-top: 25px;
 }
 
 .post-actions {
-    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 35px;
 }
 
-.post-actions .edit-btn, .post-actions .delete-btn {
-    display: inline-block;
-    margin-right: 10px;
-    padding: 10px 20px;
-    background-color: #201E43;
+.post-actions .edit-btn,
+.post-actions .delete-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
     color: white;
-    border: none;
-    border-radius: 15px;
     text-decoration: none;
-    cursor: pointer;
-    font-family: "Kanit", sans-serif;
+    border-radius: 8px;
+    margin-right: 12px;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
 }
 
-.post-actions .edit-btn:hover, .post-actions .delete-btn:hover {
-    background-color:#134B70;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+/* Edit Button */
+.post-actions .edit-btn {
+    background-color: #4F6A82; /* Darker blue */
+}
+
+.post-actions .edit-btn:hover {
+    background-color: #3C4F66;
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* Delete Button */
+.post-actions .delete-btn {
+    background-color: #D94F4F; /* Red for delete to differentiate */
+}
+
+.post-actions .delete-btn:hover {
+    background-color: #C0392B;
+    transform: scale(1.05); /* Slight scale-up effect */
 }
 
 .delete-form {
     display: inline;
 }
-.form-wrapper{
+
+/* Timestamp Styling */
+.timestamp {
+    font-size: 0.9em;
+    color: #777;
+    font-style: italic;
+    margin-top: 12px;
+}
+
+/* Forms for Create and Edit Posts */
+.form-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vw;
-    background-color: #9d9d9d;
-
+    width: 100%;
+    background-color: #f1f5f9;
 }
-/* Styles for Create Post and Edit Post pages */
+
 .form-container {
-    
-    background-color: #EEEEEE;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 20px 20px 20px 20px rgba(0,0,0,0.1);
-    max-width: 600px;
-    width:100%;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    max-width: 650px;
+    width: 100%;
     margin: 20px;
-  
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .form-container h1 {
-    margin-top: 0;
-    font-size: 24px;
-    color: #434242;
-    font-family: "Kanit", sans-serif;
+    font-size: 36px;
+    color: #2F3C55;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .form-container label {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 12px;
     display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-    font-family: "Kanit", sans-serif;
-    color: #424242;
-    
 }
 
 .form-container input[type="text"],
 .form-container textarea {
-    width: calc(100% - 22px); /* accounting for padding */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    width: 100%;
+    padding: 16px;
     font-size: 16px;
-    background-color: #faf7f7;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    transition: all 0.3s ease;
 }
 
-.form-container textarea {
-    height: 150px;
-    resize: vertical;
+.form-container input[type="text"]:focus,
+.form-container textarea:focus {
+    border-color: #4F6A82;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-container button {
-    padding: 10px 20px;
-    background-color: #201E43;
+    background-color: #4F6A82;
     color: white;
+    padding: 16px 24px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    font-family: "Kanit", sans-serif;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    width: 100%;
 }
 
 .form-container button:hover {
-    background-color: #134B70;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: #3C4F66;
+    transform: scale(1.05); /* Slight scaling effect on hover */
 }
 
+/* Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
 
+    .sidebar {
+        width: 100%;
+        margin-bottom: 25px;
+    }
 
-  .roboto-bold-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-  
+    .content {
+        width: 100%;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+
+    .content {
+        padding: 35px;
+    }
+}
